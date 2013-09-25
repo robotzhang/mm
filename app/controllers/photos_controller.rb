@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @photos = Photo.all.page(params[:page]).per(32)
   end
@@ -13,6 +15,8 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    @photo.remote_url = (photo_params[:remote_file_url] || nil)
+    @photo.user_id = current_user.id
     @photo.save ? redirect_to(photos_path) : render(action: :new)
   end
 
