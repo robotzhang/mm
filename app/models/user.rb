@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
+  ACCESSABLE_ATTRS = [:name, :password, :password_confirm, :email]
+
   def has_role?(role)
     self.role == role.to_s
   end
