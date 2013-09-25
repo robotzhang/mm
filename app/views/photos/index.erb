@@ -1,0 +1,15 @@
+<div class="row">
+  <% @photos.each_with_index do |photo, index| %>
+    <% if index < 4 %>
+    <span class="span3">
+    <% end %>
+      <%= image_tag photo.file.list.url, alt: photo.name, title: photo.name %>
+      <%= link_to "删除", photo_path(photo), method: "delete" %>
+    <% if index < 4 %>
+    </span>
+    <% end %>
+  <% end %>
+</div>
+<%= paginate @photos, theme: "bootstrap" %>
+
+<a href="<%= new_photo_path %>" class="btn btn-danger">添加图片</a>
