@@ -3,8 +3,14 @@
   <div class="col span3" id="col_<%=column%>">
     <% @photos.each_with_index do |photo, index| %>
         <% if index % 4 == column %>
-            <%= image_tag photo.file.list.url, alt: photo.name, title: photo.name %>
-            <%= link_to "删除", photo_path(photo), method: "delete" %>
+        <div class="mb20">
+            <a target="_blank" href="<%= photo_path(photo) %>">
+              <%= image_tag photo.file.list.url, alt: photo.name, title: photo.name %>
+            </a>
+            <% if can? :delete, photo %>
+              <%= link_to "删除", photo_path(photo), method: "delete" %>
+            <% end %>
+        </div>
         <% end %>
     <% end %>
   </div>

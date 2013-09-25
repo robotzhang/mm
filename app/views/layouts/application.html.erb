@@ -20,7 +20,18 @@
 
           <ul class="nav pull-right">
             <% if can? :create, Photo %>
-            <li><a href="<%= new_photo_path %>"><i class="icon-add"></i>添加</a></li>
+            <li>
+              <a href="<%= new_photo_path %>"><i class="icon-add"></i>添加</a>
+            </li>
+            <% end %>
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to "<i class='icon-off'></i>".html_safe, destroy_user_session_path, method: "delete", title: "退出登录" %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to "<i class='icon-user'></i>".html_safe, new_user_session_path(next: request.url), title: "登录" %>
+            </li>
             <% end %>
           </ul>
         </div>
