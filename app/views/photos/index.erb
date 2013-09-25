@@ -1,15 +1,16 @@
 <div class="row">
-  <% @photos.each_with_index do |photo, index| %>
-    <% if index < 4 %>
-    <span class="span3">
+  <% (0..3).each do |column| %>
+  <div class="col span3" id="col_<%=column%>">
+    <% @photos.each_with_index do |photo, index| %>
+        <% if index % 4 == column %>
+            <%= image_tag photo.file.list.url, alt: photo.name, title: photo.name %>
+            <%= link_to "删除", photo_path(photo), method: "delete" %>
+        <% end %>
     <% end %>
-      <%= image_tag photo.file.list.url, alt: photo.name, title: photo.name %>
-      <%= link_to "删除", photo_path(photo), method: "delete" %>
-    <% if index < 4 %>
-    </span>
-    <% end %>
+  </div>
   <% end %>
 </div>
+
 <%= paginate @photos, theme: "bootstrap" %>
 
 <a href="<%= new_photo_path %>" class="btn btn-danger">添加图片</a>
