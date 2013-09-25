@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <title>Mm</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -7,10 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="header mb20">
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="/" class="brand">
+            最福利
+          </a>
+          <ul class="nav pull-left">
+            <!--li><a href="">MM</a></li-->
+          </ul>
 
- <div class="container">
-   <%= yield %>
- </div>
+          <ul class="nav pull-right">
+            <li><a href="<%= new_photo_path %>"><i class="icon-add"></i>添加</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <div class="footer">
+
+  </div>
 
 </body>
 </html>

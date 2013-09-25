@@ -12,3 +12,5 @@
  *= require bootstrap
  *= require_tree .
  */
+
+.mb20 { margin-bottom: 20px; }

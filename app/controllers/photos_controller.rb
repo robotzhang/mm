@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def index
-    @photos = Photo.all.page(params[:page]).per(16)
+    @photos = Photo.all.page(params[:page]).per(32)
   end
 
   def show
